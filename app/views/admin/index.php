@@ -42,6 +42,7 @@
                     <th>Date</th>
                     <th>Comapny</th>
                     <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
+                        <th>Edit</th>
                         <th>Delete</th>
                     <?php endif; ?>
                 </tr>
@@ -54,7 +55,12 @@
                         <td><?= $invoice->name ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
                             <td>                          
-                                <form class="pull-right" action="<?= URLROOT ?>/invoices/delete/<?= intval($invoice->invoiceId) ?>" method="post">                       
+                                <form action="<?= URLROOT ?>/invoices/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
+                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
+                                </form>
+                            </td>
+                            <td>                          
+                                <form action="<?= URLROOT ?>/invoices/delete/<?= intval($invoice->invoiceId) ?>" method="post">                       
                                     <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
                                 </form>
                             </td>
@@ -75,6 +81,7 @@
                     <th>Email</th>
                     <th>Company</th>
                     <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
+                        <th>Edit</th>
                         <th>Delete</th>
                     <?php endif; ?>
                 </tr>
@@ -88,6 +95,11 @@
                         <td><?= $person->name ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
                             <td>                          
+                                <form action="<?= URLROOT ?>/people/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
+                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
+                                </form>
+                            </td>
+                            <td>                        
                                 <form class="pull-right" action="<?= URLROOT ?>/people/delete/<?= intval($person->personId) ?>" method="post">                       
                                     <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
                                 </form>
@@ -109,6 +121,7 @@
                     <th>Country</th>
                     <th>Type</th>
                     <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
+                        <th>Edit</th>
                         <th>Delete</th>
                     <?php endif; ?>
                 </tr>
@@ -121,6 +134,11 @@
                         <td><?= $company->country ?></td>
                         <td><?= $company->type ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
+                            <td>                          
+                                <form action="<?= URLROOT ?>/companies/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
+                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
+                                </form>
+                            </td>
                             <td>                          
                                 <form class="pull-right" action="<?= URLROOT ?>/companies/delete/<?= intval($company->companyId) ?>" method="post">                       
                                     <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
