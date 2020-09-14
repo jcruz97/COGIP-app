@@ -1,7 +1,7 @@
     </div>
 
-    <footer class="footer">
-      <div class="container">
+    <footer class="footer fixed-bottom bg-dark py-3">
+      <div class="container text-center">
         <span class="text-muted">Vive la COGIP!</span>
       </div>
     </footer>

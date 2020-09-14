@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
   <div class="container">
+  <!-- <img src="<?= URLROOT ?>/img/logo1.png" alt="Logo COGIP"> -->
     <a class="navbar-brand" href="<?= URLROOT ?>"><?= SITENAME ?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
