@@ -4,8 +4,8 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <h1>Welcome to the COGIP</h1>
-            <p>Bonjour <?= $_SESSION['user_name'] ?> !</p>
-            <p>Que souhaitez-vous faire aujourd'hui ?</p>
+            <p>Hello <?= $_SESSION['user_name'] ?> !</p>
+            <p>What would you like to do today ?</p>
         </div>
     </div>
     <div class="row mb-3">
