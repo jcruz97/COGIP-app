@@ -15,7 +15,7 @@
     <td><?php echo ($data['company']->type_id == 1) ? 'Supplier' : 'Client'; ?></td>
     </tr>
 </table>
-
+<?php if(!empty($data['people'])) : ?>
 <h3>Contact person</h3>
 <table class="table table-dark">
     <tr>
@@ -29,5 +29,5 @@
     <td><?php echo $data['people']->Telephone; ?></td>
     </tr>
 </table>
-
+<?php endif; ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
