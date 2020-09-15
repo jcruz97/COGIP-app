@@ -87,6 +87,28 @@
             $row = $this->db->single();
             return $row;
         }
+        public function updatePerson($data)
+        {
+            $this->db->query('UPDATE people SET first_name = :first_name, last_name = :last_name, telephone = :telephone, email = :email, company_id = :company_id WHERE id = :id');
+
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':telephone', $data['telephone']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':company_id', $data['company_id']);
+      
+            // Execute
+            if ($this->db->execute())
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
+        }
 
         public function deletePerson($id)
         {

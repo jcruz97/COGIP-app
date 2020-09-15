@@ -3,7 +3,7 @@
     <a href="<?= URLROOT ?>/admin   " class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
     <div class="card card-body bg-light mt-5">
         <h2>Edit Invoice</h2>
-        <p>Edit your invoice with this form</p>
+        <p>Edit an invoice with this form</p>
         <form action="<?= URLROOT ?>/invoices/edit/<?= $data['id'] ?>" method="post">
             <div class="form-group">
                 <label for="number">Invoice Number: <sup>*</sup></label>

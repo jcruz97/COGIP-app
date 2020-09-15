@@ -109,6 +109,9 @@
             $companies = $this->companyModel->getCompanies();
             $people = $this->personModel->getPeople();
 
+            // Get existing invoice from model
+            $invoice = $this->invoiceModel->getInvoiceById($id);
+
             // Check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
@@ -175,10 +178,6 @@
             }
             else
             {
-                // Get existing invoice from model
-                $invoice = $this->invoiceModel->getInvoiceById($id);
-                var_dump($invoice);
-
                 // Init data
                 $data =
                 [

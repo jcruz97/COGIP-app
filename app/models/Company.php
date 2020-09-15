@@ -78,6 +78,28 @@
             return $row;
         }
 
+        public function updateCompany($data)
+        {
+            $this->db->query('UPDATE companies SET name = :name, country = :country, vat = :vat, type_id = :type_id WHERE id = :id');
+
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':country', $data['country']);
+            $this->db->bind(':vat', $data['vat']);
+            $this->db->bind(':type_id', $data['type_id']);
+      
+            // Execute
+            if ($this->db->execute())
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
+        }
+
         public function deleteCompany($id)
         {
             $this->db->query('DELETE FROM companies WHERE id = :id');
