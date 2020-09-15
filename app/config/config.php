@@ -10,7 +10,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     // URL Root
-    define('URLROOT', 'http://localhost/cogip-app');
+    define('URLROOT', 'http://localhost/COGIP-app');
 
     // Site Name
     define('SITENAME', 'Cogip');

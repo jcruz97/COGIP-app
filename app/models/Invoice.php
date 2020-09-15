@@ -65,6 +65,28 @@
             return $row;
         }
 
+        public function updateInvoice($data)
+        {
+            $this->db->query('UPDATE invoices SET number = :number, date = :date, company_id = :company_id, people_id = :people_id WHERE id = :id');
+
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':number', $data['number']);
+            $this->db->bind(':date', $data['date']);
+            $this->db->bind(':company_id', $data['company_id']);
+            $this->db->bind(':people_id', $data['people_id']);
+      
+            // Execute
+            if ($this->db->execute())
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
+        }
+
         public function deleteInvoice($id)
         {
             $this->db->query('DELETE FROM invoices WHERE id = :id');

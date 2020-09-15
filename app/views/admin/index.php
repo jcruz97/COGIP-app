@@ -55,9 +55,7 @@
                         <td><?= $invoice->name ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
                             <td>                          
-                                <form action="<?= URLROOT ?>/invoices/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
-                                </form>
+                                <a href="<?= URLROOT ?>/invoices/edit/<?= intval($invoice->invoiceId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
                             </td>
                             <td>                          
                                 <form action="<?= URLROOT ?>/invoices/delete/<?= intval($invoice->invoiceId) ?>" method="post">                       
@@ -95,9 +93,7 @@
                         <td><?= $person->name ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
                             <td>                          
-                                <form action="<?= URLROOT ?>/people/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
-                                </form>
+                            <a href="<?= URLROOT ?>/people/edit/<?= intval($person->personId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
                             </td>
                             <td>                        
                                 <form class="pull-right" action="<?= URLROOT ?>/people/delete/<?= intval($person->personId) ?>" method="post">                       
@@ -135,9 +131,7 @@
                         <td><?= $company->type ?></td>
                         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
                             <td>                          
-                                <form action="<?= URLROOT ?>/companies/edit/<?= intval($invoice->invoiceId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-secondary" style="font-family: FontAwesome" value="&#xf044">
-                                </form>
+                                <a href="<?= URLROOT ?>/companies/edit/<?= intval($company->companyId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
                             </td>
                             <td>                          
                                 <form class="pull-right" action="<?= URLROOT ?>/companies/delete/<?= intval($company->companyId) ?>" method="post">                       
