@@ -2,13 +2,13 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-    <a href="<?= URLROOT ?>/users   " class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
+    <a href="<?= URLROOT ?>/users" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
-                <h2>Add User</h2>
-                <p>Create a new user with this form</p>
-                <form action="<?= URLROOT ?>/users/register" method="post">
+                <h2>Edit User</h2>
+                <p>Update a user with this form</p>
+                <form action="<?= URLROOT ?>/users/edit/<?= $data['id'] ?>" method="post">
                     <div class="form-group">
                         <label for="name">Name: <sup>*</sup></label>
                         <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?= $data['name'] ?>">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input type="submit" value="Add user" class="btn btn-success">
+                            <input type="submit" value="Update user" class="btn btn-success">
                         </div>
                     </div>
                 </form>

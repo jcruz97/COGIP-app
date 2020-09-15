@@ -19,6 +19,11 @@
               <a class="nav-link" href="<?= URLROOT ?>/admin">Admin</a>
           </li>
         <?php endif; ?>
+        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= URLROOT ?>/users">Users</a>
+            </li>
+        <?php endif; ?>
       </ul>
 
       <ul class="navbar-nav ml-auto">

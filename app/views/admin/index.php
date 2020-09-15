@@ -4,36 +4,29 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <h1>Welcome to the COGIP</h1>
-            <p>Hello <?= $_SESSION['user_name'] ?> !</p>
+            <p>Hello <strong><?= $_SESSION['user_name'] ?></strong> !</p>
             <p>What would you like to do today ?</p>
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-md-2 mx-auto">
-            <a href="<?= URLROOT ?>/invoices/add" class="btn btn-primary">
+        <div class="col-md-3 mx-auto">
+            <a href="<?= URLROOT ?>/invoices/add" class="btn btn-primary btn-block">
                 <i class="fas fa-plus"></i> New Invoice
             </a>
         </div>
-        <div class="col-md-2 mx-auto">
-            <a href="<?= URLROOT ?>/people/add" class="btn btn-primary">
+        <div class="col-md-3 mx-auto">
+            <a href="<?= URLROOT ?>/people/add" class="btn btn-primary btn-block">
                 <i class="fas fa-plus"></i> New Contact
             </a>
         </div>
-        <div class="col-md-2 mx-auto">
-            <a href="<?= URLROOT ?>/companies/add" class="btn btn-primary">
+        <div class="col-md-3 mx-auto">
+            <a href="<?= URLROOT ?>/companies/add" class="btn btn-primary btn-block">
                 <i class="fas fa-plus"></i> New Company
             </a>
         </div>
-        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-            <div class="col-md-2 mx-auto"">
-                <a href="<?= URLROOT ?>/users/register" class="btn btn-primary">
-                    <i class="fas fa-plus"></i> New User
-                </a>
-            </div>
-        <?php endif; ?>
     </div>
 
-    <h2 class="pt-3">Last invoices</h2>
+    <h3 class="pt-3">Last invoices</h3>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -69,7 +62,7 @@
         </table>
       </div>
 
-      <h2>Last contacts</h2>
+      <h3>Last contacts</h3>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -107,7 +100,7 @@
         </table>
       </div>
 
-      <h2>Last companies</h2>
+      <h3>Last companies</h3>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>

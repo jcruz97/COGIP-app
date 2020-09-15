@@ -49,6 +49,43 @@
       }
     }
 
+    public function getUsers()
+    {
+      $this->db->query('SELECT *,
+                        users.id as userId,
+                        users_type.id as typeId
+                        FROM users
+                        INNER JOIN users_type
+                        ON users.type_id = users_type.id
+                        ORDER BY users.id ASC
+                        ');
+
+      $results = $this->db->resultSet();
+
+      return $results;
+    }
+
+    public function updateUser($data)
+        {
+            $this->db->query('UPDATE users SET name = :name, password = :password, type_id = :type_id WHERE id = :id');
+
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':type_id', $data['user_type_id']);
+      
+            // Execute
+            if ($this->db->execute())
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
+        }
+
     // Find user by email
     public function findUserByEmail($email)
     {
@@ -94,5 +131,23 @@
       $row = $this->db->single();
 
       return $row;
+    }
+
+    public function deleteUser($id)
+    {
+        $this->db->query('DELETE FROM users WHERE id = :id');
+
+        // Bind values
+        $this->db->bind(':id', $id);
+  
+        // Execute
+        if ($this->db->execute())
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
     }
   }

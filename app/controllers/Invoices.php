@@ -141,9 +141,12 @@
                 }
                 else
                 {
-                    if ($this->invoiceModel->findInvoiceByNumber($data['number']))
+                    if ($data['number'] != $invoice->number)
                     {
-                        $data['number_err'] = 'Invoice number already exists';
+                        if ($this->invoiceModel->findInvoiceByNumber($data['number']))
+                        {
+                            $data['number_err'] = 'Invoice number already exists';
+                        }
                     }
                 }
 
@@ -158,7 +161,7 @@
                 {
                     // Validated
 
-                    // Add invoice
+                    // Update invoice
                     if ($this->invoiceModel->updateInvoice($data))
                     {
                         flash('admin_message', 'Invoice updated');

@@ -179,9 +179,12 @@
                 }
                 else
                 {
-                    if ($this->personModel->findTelephone($data['telephone']))
+                    if ($data['telephone'] != $person->telephone)
                     {
-                        $data['telephone_err'] = 'Telephone number already exists';
+                        if ($this->personModel->findTelephone($data['telephone']))
+                        {
+                            $data['telephone_err'] = 'Telephone number already exists';
+                        }
                     }
                 }
 
@@ -192,9 +195,12 @@
                 }
                 else
                 {
-                    if ($this->personModel->findEmail($data['email']))
+                    if ($data['email'] != $person->email)
                     {
-                        $data['email_err'] = 'Email address already exists';
+                        if ($this->personModel->findEmail($data['email']))
+                        {
+                            $data['email_err'] = 'Email address already exists';
+                        }
                     }
                 }
 

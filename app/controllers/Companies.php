@@ -159,9 +159,12 @@
                 }
                 else
                 {
-                    if ($this->companyModel->findVat($data['vat']))
+                    if ($data['vat'] != $company->vat)
                     {
-                        $data['vat_err'] = 'VAT number already exists';
+                        if ($this->companyModel->findVat($data['vat']))
+                        {
+                            $data['vat_err'] = 'VAT number already exists';
+                        }
                     }
                 }
 
