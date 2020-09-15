@@ -19,7 +19,7 @@
             $data =
             [
                 'title' => 'Cogip APP',
-                'description' => 'Welcome to the Cogip APP',
+                'description' => 'Welcome to the COGIP',
                 'invoices' => $invoices,
                 'people' => $people,
                 'companies' => $companies

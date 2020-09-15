@@ -15,10 +15,6 @@
                     <th>Invoice number</th>
                     <th>Date</th>
                     <th>Comapny</th>
-                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -27,16 +23,6 @@
                         <td><?= $invoice->number ?></td>
                         <td><?= $invoice->date ?></td>
                         <td><?= $invoice->name ?></td>
-                        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                            <td>                          
-                                <a href="<?= URLROOT ?>/invoices/edit/<?= intval($invoice->invoiceId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
-                            </td>
-                            <td>                          
-                                <form action="<?= URLROOT ?>/invoices/delete/<?= intval($invoice->invoiceId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
-                                </form>
-                            </td>
-                        <?php endif; ?>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -52,10 +38,6 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Company</th>
-                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -65,16 +47,6 @@
                         <td><?= $person->telephone ?></td>
                         <td><?= $person->email ?></td>
                         <td><?= $person->name ?></td>
-                        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                            <td>                          
-                            <a href="<?= URLROOT ?>/people/edit/<?= intval($person->personId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
-                            </td>
-                            <td>                        
-                                <form class="pull-right" action="<?= URLROOT ?>/people/delete/<?= intval($person->personId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
-                                </form>
-                            </td>
-                        <?php endif; ?>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -90,10 +62,6 @@
                     <th>VAT</th>
                     <th>Country</th>
                     <th>Type</th>
-                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -103,16 +71,6 @@
                         <td><?= $company->vat ?></td>
                         <td><?= $company->country ?></td>
                         <td><?= $company->type ?></td>
-                        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == '1') : ?>
-                            <td>                          
-                                <a href="<?= URLROOT ?>/companies/edit/<?= intval($company->companyId) ?>" class="btn btn-dark"><i class="fas fa-edit"></i></a>
-                            </td>
-                            <td>                          
-                                <form class="pull-right" action="<?= URLROOT ?>/companies/delete/<?= intval($company->companyId) ?>" method="post">                       
-                                    <input type="submit" class="btn btn-danger" style="font-family: FontAwesome" value="&#xf2ed">
-                                </form>
-                            </td>
-                        <?php endif; ?>
                     </tr>
                 <?php endforeach ?>
             </tbody>

@@ -4,6 +4,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <h1>Welcome to the COGIP</h1>
+            <h2>Admin Dashboard</h2>
             <p>Hello <strong><?= $_SESSION['user_name'] ?></strong> !</p>
             <p>What would you like to do today ?</p>
         </div>
