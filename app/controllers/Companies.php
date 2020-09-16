@@ -12,6 +12,13 @@
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
         }
+        public function list(){
+            $companies = $this->companyModel->list();
+            $data = [
+                'companies' => $companies
+            ];
+            $this->view('companies/list', $data);
+        }
 
         public function add()
         {
@@ -220,7 +227,7 @@
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
                 // Get existing post from model
-                $invoice = $this->companyModel->getCompanyById($id);
+                $companies = $this->companyModel->getCompanyById($id);
 
                 // Check for owner
                 if ($_SESSION['user_type'] != '1')
