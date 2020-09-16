@@ -20,7 +20,7 @@
             $this->view('users/index', $data);
         }
 
-        public function register()
+        public function add()
         {
             // Get foreign key IDs
             $users_type = $this->typeModel->getUsersTypes();
@@ -39,7 +39,7 @@
                     'name' => trim($_POST['name']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
-                    'user_type_id' => intval(trim($_POST['user_type_id'])),
+                    'user_type_id' => trim($_POST['user_type_id']),
                     'users_type' => $users_type,
                     'name_err' => '',
                     'email_err' => '',
@@ -84,18 +84,15 @@
                 }
 
                 // Make sure errors are empty
-                if (
-                    empty($data['name_err']) &&
-                    empty($data['password_err']) &&
-                    empty($data['confirm_password_err']))
+                if (empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err']))
                 {
                     // Validated
                     
                     // Hash Password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    // Register user
-                    if ($this->userModel->register($data))
+                    // Add User
+                    if ($this->userModel->add($data))
                     {
                         flash('user_message', 'User added');
                         redirect('users/index');
@@ -108,7 +105,7 @@
                 else
                 {
                     // Load view with errors
-                    $this->view('users/register', $data);
+                    $this->view('users/add', $data);
                 }
 
             }
@@ -129,7 +126,7 @@
                 ];
 
                 // Load view
-                $this->view('users/register', $data);
+                $this->view('users/add', $data);
             }
         }
 
@@ -156,7 +153,7 @@
                     'name' => trim($_POST['name']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
-                    'user_type_id' => intval(trim($_POST['user_type_id'])),
+                    'user_type_id' => trim($_POST['user_type_id']),
                     'users_type' => $users_type,
                     'name_err' => '',
                     'password_err' => '',
@@ -203,17 +200,14 @@
                 }
 
                 // Make sure errors are empty
-                if (
-                    empty($data['name_err']) &&
-                    empty($data['password_err']) &&
-                    empty($data['confirm_password_err']))
+                if (empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err']))
                 {
                     // Validated
                     
                     // Hash Password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    // Update user
+                    // Update User
                     if ($this->userModel->updateUser($data))
                     {
                         flash('user_message', 'User updated');
@@ -340,9 +334,6 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                // Get existing post from model
-                $user = $this->userModel->getUserById($id);
-
                 // Check for owner
                 if ($_SESSION['user_type'] != '1')
                 {
@@ -351,7 +342,7 @@
 
                 if ($this->userModel->deleteUser($id))
                 {
-                    flash('user_message', 'User Removed');
+                    flash('user_message', 'User removed');
                     redirect('users');
                 }
                 else
@@ -361,7 +352,7 @@
             }
             else
             {
-                redirect('admin');
+                redirect('users');
             }
         }
 

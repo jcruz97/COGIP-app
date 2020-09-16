@@ -11,28 +11,31 @@
 
         public function getCompanies()
         {
-            $this->db->query('SELECT name, id FROM companies');
+            $this->db->query('SELECT *
+                              FROM companies
+                              ORDER BY name ASC
+                              ');
 
             $results = $this->db->resultSet();
 
             return $results;
         }
 
-        public function getCompaniesTypes()
+        public function get5Companies()
         {
-          $this->db->query('SELECT *,
-                            companies.id as companyId,
-                            type.id as typeId
-                            FROM companies
-                            INNER JOIN type
-                            ON companies.type_id = type.id
-                            ORDER BY companies.id DESC
-                            LIMIT 5
-                            ');
+            $this->db->query('SELECT *,
+                              companies.id as companyId,
+                              type.id as typeId
+                              FROM companies
+                              INNER JOIN type
+                              ON companies.type_id = type.id
+                              ORDER BY companies.id DESC
+                              LIMIT 5
+                              ');
 
-          $results = $this->db->resultSet();
+            $results = $this->db->resultSet();
 
-          return $results;
+            return $results;
         }
 
         public function getCompanyById($id)
@@ -75,12 +78,24 @@
             $this->db->bind(':vat', $vat);
 
             $row = $this->db->single();
-            return $row;
+
+            // Check row
+            if ($this->db->rowCount() > 0)
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
         }
 
         public function updateCompany($data)
         {
-            $this->db->query('UPDATE companies SET name = :name, country = :country, vat = :vat, type_id = :type_id WHERE id = :id');
+            $this->db->query('UPDATE companies
+                              SET name = :name, country = :country, vat = :vat, type_id = :type_id
+                              WHERE id = :id
+                              ');
 
             // Bind values
             $this->db->bind(':id', $data['id']);

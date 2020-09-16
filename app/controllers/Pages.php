@@ -12,9 +12,9 @@
         public function index()
         {
 
-            $invoices = $this->invoiceModel->getInvoices();
-            $people = $this->personModel->getPeopleCompanies();
-            $companies = $this->companyModel->getCompaniesTypes();
+            $invoices = $this->invoiceModel->get5Invoices();
+            $people = $this->personModel->get5People();
+            $companies = $this->companyModel->get5Companies();
             
             $data =
             [

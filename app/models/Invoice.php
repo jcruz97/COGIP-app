@@ -11,7 +11,9 @@
 
         public function addInvoice($data)
         {
-            $this->db->query('INSERT INTO invoices(number, date, company_id, people_id) VALUES(:number, :date, :company_id, :people_id)');
+            $this->db->query('INSERT INTO invoices(number, date, company_id, people_id)
+                              VALUES(:number, :date, :company_id, :people_id)
+                              ');
 
             // Bind values
             $this->db->bind(':number', $data['number']);
@@ -31,6 +33,18 @@
         }
 
         public function getInvoices()
+        {
+          $this->db->query('SELECT *
+                            FROM invoices
+                            ORDER BY date DESC
+                            ');
+
+          $results = $this->db->resultSet();
+
+          return $results;
+        }
+
+        public function get5Invoices()
         {
           $this->db->query('SELECT *,
                             invoices.id as invoiceId,
@@ -62,12 +76,24 @@
             $this->db->bind(':number', $number);
 
             $row = $this->db->single();
-            return $row;
+
+            // Check row
+            if ($this->db->rowCount() > 0)
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
         }
 
         public function updateInvoice($data)
         {
-            $this->db->query('UPDATE invoices SET number = :number, date = :date, company_id = :company_id, people_id = :people_id WHERE id = :id');
+            $this->db->query('UPDATE invoices
+                              SET number = :number, date = :date, company_id = :company_id, people_id = :people_id
+                              WHERE id = :id
+                              ');
 
             // Bind values
             $this->db->bind(':id', $data['id']);

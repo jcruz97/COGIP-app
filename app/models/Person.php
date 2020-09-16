@@ -11,36 +11,37 @@
 
         public function getPeople()
         {
-            $this->db->query('SELECT * FROM people');
+            $this->db->query('SELECT *
+                              FROM people
+                              ORDER BY last_name ASC
+                              ');
 
             $results = $this->db->resultSet();
 
             return $results;
         }
 
-        public function getPeopleCompanies()
+        public function get5People()
         {
-          $this->db->query('SELECT *,
-                            people.id as personId,
-                            companies.id as companyId
-                            FROM people
-                            INNER JOIN companies
-                            ON people.company_id = companies.id
-                            ORDER BY people.id DESC
-                            LIMIT 5
-                            ');
+            $this->db->query('SELECT *,
+                              people.id as personId,
+                              companies.id as companyId
+                              FROM people
+                              INNER JOIN companies
+                              ON people.company_id = companies.id
+                              ORDER BY people.id DESC
+                              LIMIT 5
+                              ');
 
-          $results = $this->db->resultSet();
+            $results = $this->db->resultSet();
 
-          return $results;
+            return $results;
         }
 
         public function addPerson($data)
         {
-            $this->db->query('INSERT INTO
-                              people(first_name, last_name, telephone, email, company_id)
-                              VALUES
-                              (:first_name, :last_name, :telephone, :email, :company_id)
+            $this->db->query('INSERT INTO people(first_name, last_name, telephone, email, company_id)
+                              VALUES (:first_name, :last_name, :telephone, :email, :company_id)
                               ');
 
             // Bind values
@@ -76,7 +77,16 @@
             $this->db->bind(':email', $email);
 
             $row = $this->db->single();
-            return $row;
+            
+            // Check row
+            if ($this->db->rowCount() > 0)
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
         }
 
         public function findTelephone($telephone)
@@ -85,11 +95,24 @@
             $this->db->bind(':telephone', $telephone);
 
             $row = $this->db->single();
-            return $row;
+
+            // Check row
+            if ($this->db->rowCount() > 0)
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
         }
+
         public function updatePerson($data)
         {
-            $this->db->query('UPDATE people SET first_name = :first_name, last_name = :last_name, telephone = :telephone, email = :email, company_id = :company_id WHERE id = :id');
+            $this->db->query('UPDATE people
+                              SET first_name = :first_name, last_name = :last_name, telephone = :telephone, email = :email, company_id = :company_id
+                              WHERE id = :id
+                              ');
 
             // Bind values
             $this->db->bind(':id', $data['id']);

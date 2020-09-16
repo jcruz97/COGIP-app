@@ -9,8 +9,8 @@
       $this->db = new Database;
     }
 
-    // Regsiter user
-    public function register($data)
+    // Add user
+    public function add($data)
     {
       $this->db->query('INSERT INTO users(name, password, type_id) VALUES(:name, :password, :type_id)');
 
@@ -107,6 +107,27 @@
       }
     }
 
+    // Find user by Name
+    public function findUserByName($name)
+    {
+      $this->db->query('SELECT * FROM users WHERE name = :name');
+
+      // Bind value
+      $this->db->bind(':name', $name);
+
+      $row = $this->db->single();
+
+      // Check row
+      if ($this->db->rowCount() > 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
     // Get user by id
     public function getUserById($id)
     {
@@ -120,18 +141,7 @@
       return $row;
     }
 
-    // Get user by name
-    public function findUserByName($name)
-    {
-      $this->db->query('SELECT * FROM users WHERE name = :name');
 
-      // Bind value
-      $this->db->bind(':name', $name);
-
-      $row = $this->db->single();
-
-      return $row;
-    }
 
     public function deleteUser($id)
     {

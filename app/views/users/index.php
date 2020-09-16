@@ -14,7 +14,7 @@
 
     <div class="row mb-3">
         <div class="col-md-3 mx-auto">
-            <a href="<?= URLROOT ?>/users/register" class="btn btn-primary btn-block">
+            <a href="<?= URLROOT ?>/users/add" class="btn btn-primary btn-block">
                 <i class="fas fa-plus"></i> New User
             </a>
         </div>
