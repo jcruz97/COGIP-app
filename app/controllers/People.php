@@ -13,6 +13,14 @@
             $this->companyModel = $this->model('Company');
         }
 
+        public function list(){
+            $contacts = $this->personModel->list();
+            $data = [
+                'contacts' => $contacts
+            ];
+            $this->view('people/index', $data);
+        }
+
         public function add()
         {
             // Get foreign key IDs

@@ -14,6 +14,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= URLROOT ?>/pages/about">About</a>
         </li>
+        <li class="nav-item">
+        <a class="nav-link" href="<?= URLROOT ?>/people">Contacts</a>
+        </li>
         <?php if (isset($_SESSION['user_id'])) : ?>
           <li class="nav-item">
               <a class="nav-link" href="<?= URLROOT ?>/admin">Admin</a>

@@ -9,6 +9,11 @@
             $this->db = new Database;
         }
 
+        public function list(){
+          $this->db->query('SELECT * FROM `people` ORDER BY last_name');
+          return $this->db->resultSet();
+        }
+
         public function getPeople()
         {
             $this->db->query('SELECT *
