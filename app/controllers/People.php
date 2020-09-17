@@ -18,7 +18,7 @@
             $data = [
                 'contacts' => $contacts
             ];
-            $this->view('people/index', $data);
+            $this->view('people/people_list', $data);
         }
 
         public function add()
