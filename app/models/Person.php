@@ -9,11 +9,6 @@
             $this->db = new Database;
         }
 
-        public function list(){
-          $this->db->query('SELECT * FROM `people` ORDER BY last_name');
-          return $this->db->resultSet();
-        }
-
         public function getPeople()
         {
             $this->db->query('SELECT *
@@ -36,6 +31,22 @@
                               ON people.company_id = companies.id
                               ORDER BY people.id DESC
                               LIMIT 5
+                              ');
+
+            $results = $this->db->resultSet();
+
+            return $results;
+        }
+
+        public function getAllPeople()
+        {
+            $this->db->query('SELECT *,
+                              people.id as personId,
+                              companies.id as companyId
+                              FROM people
+                              INNER JOIN companies
+                              ON people.company_id = companies.id
+                              ORDER BY people.last_name ASC
                               ');
 
             $results = $this->db->resultSet();

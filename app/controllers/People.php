@@ -13,12 +13,14 @@
             $this->companyModel = $this->model('Company');
         }
 
-        public function list(){
-            $contacts = $this->personModel->list();
+        public function index(){
+            $contacts = $this->personModel->getAllPeople();
+
             $data = [
                 'contacts' => $contacts
             ];
-            $this->view('people/people_list', $data);
+
+            $this->view('people/index', $data);
         }
 
         public function add()

@@ -16,10 +16,10 @@
     <tbody>
         <?php foreach ($data['contacts'] as $contact ) : ?>
           <tr>
-              <td><?php $contact->first_name . $person->last_name; ?></td>
-              <td><?php $contact->telephone; ?></td>
-              <td><?php $contact->email; ?></td>
-              <td><?php $contact->company_id; ?></td>
+              <td><?= $contact->first_name . ' ' . $contact->last_name ?></td>
+              <td><?= $contact->telephone ?></td>
+              <td><?= $contact->email ?></td>
+              <td><?= $contact->name ?></td>
           </tr>
         <?php endforeach ?>
     </tbody>
