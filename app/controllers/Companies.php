@@ -250,4 +250,18 @@
                 redirect('admin');
             }
         }
+
+        // view details
+        public function details($id){
+            $details = $this->invoiceModel->detailInvoice($id);
+            $company = $this->invoiceModel->detailCompanies($details->company_id);
+            $people = $this->invoiceModel->detailPeople($details->company_id);
+            $data = [
+                'details' => $details,
+                'company' => $company,
+                'people' => $people
+            ];
+
+            $this->view('companies/details', $data);
+        }
     }
