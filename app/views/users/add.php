@@ -1,5 +1,3 @@
-<?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1') { redirect(''); } ?>
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
     <a href="<?= URLROOT ?>/users" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>

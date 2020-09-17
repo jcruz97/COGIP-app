@@ -4,17 +4,18 @@
     {
         public function __construct()
         {
-            if (!isLoggedIn())
-            {
-                redirect('users/login');
-            }
-
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
         }
 
         public function add()
         {
+            // Check if user is logged in
+            if (!isLoggedIn())
+            {
+                redirect('users/login');
+            }
+
             // Get foreign key IDs
             $types = $this->typeModel->getCompaniesTypes();
 
@@ -111,7 +112,7 @@
         }
 
         public function edit($id)
-        {
+        {            
             // Get foreign key IDs
             $types = $this->typeModel->getCompaniesTypes();
 

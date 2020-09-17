@@ -4,11 +4,6 @@
     {
         public function __construct()
         {
-            if (!isLoggedIn())
-            {
-                redirect('users/login');
-            }
-
             $this->invoiceModel = $this->model('Invoice');
             $this->companyModel = $this->model('Company');
             $this->personModel = $this->model('Person');
@@ -16,6 +11,12 @@
 
         public function add()
         {
+            // Check if user is logged in
+            if (!isLoggedIn())
+            {
+                redirect('users/login');
+            }
+            
             // Get foreign key IDs
             $companies = $this->companyModel->getCompanies();
             $people = $this->personModel->getPeople();

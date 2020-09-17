@@ -10,6 +10,12 @@
 
         public function index()
         {
+            // Check for privileges
+            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1')
+            {
+                redirect('');
+            }
+
             $users = $this->userModel->getUsers();
             
             $data =
@@ -22,6 +28,12 @@
 
         public function add()
         {
+            // Check for privileges
+            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1')
+            {
+                redirect('');
+            }
+
             // Get foreign key IDs
             $users_type = $this->typeModel->getUsersTypes();
 

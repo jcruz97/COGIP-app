@@ -1,5 +1,3 @@
-<?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1') { redirect(''); } ?>
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
     <?php flash('user_message'); ?>
