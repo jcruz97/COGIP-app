@@ -11,13 +11,18 @@
 
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
+            $this->invoiceModel = $this->model('Invoice');
+            $this->personModel = $this->model('Person');
         }
-        public function list(){
+
+        public function index(){
             $companies = $this->companyModel->list();
+
             $data = [
                 'companies' => $companies
             ];
-            $this->view('companies/list', $data);
+
+            $this->view('companies/index', $data);
         }
 
         public function add()
@@ -253,12 +258,13 @@
 
         // view details
         public function details($id){
-            $details = $this->invoiceModel->detailInvoice($id);
-            $company = $this->invoiceModel->detailCompanies($details->company_id);
-            $people = $this->invoiceModel->detailPeople($details->company_id);
+            $details = $this->companyModel->getCompanyById($id);
+            $invoices = $this->invoiceModel->getInvoicesById($id);
+            $people = $this->personModel->getPersonById($id);
+
             $data = [
                 'details' => $details,
-                'company' => $company,
+                'company' => $invoices,
                 'people' => $people
             ];
 

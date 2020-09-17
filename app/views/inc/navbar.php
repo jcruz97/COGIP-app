@@ -15,7 +15,7 @@
           <a class="nav-link" href="<?= URLROOT ?>/pages/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= URLROOT ?>/companies/list">Companies</a>
+          <a class="nav-link" href="<?= URLROOT ?>/companies">Companies</a>
         </li>
         <?php if (isset($_SESSION['user_id'])) : ?>
           <li class="nav-item">

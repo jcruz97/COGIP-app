@@ -56,6 +56,15 @@
             return $row;
         }
 
+        public function getInvoicesById($id)
+        {
+            $this->db->query('SELECT * FROM invoices WHERE company_id = :company_id');
+            $this->db->bind(':company_id', $id);
+
+            $row = $this->db->single();
+            return $row;
+        }
+
         public function findInvoiceByNumber($number)
         {
             $this->db->query('SELECT * FROM invoices WHERE number = :number');

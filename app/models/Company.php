@@ -121,35 +121,4 @@
               return false;
             }
         }
-
-              //Detail invoice
-          public function detailInvoice($id){
-            $this->db->query('SELECT * FROM invoices WHERE id = :id');
-            $this->db->bind(':id', $id);
-            if($inv = $this->db->single()){
-                return $inv;
-            }else{
-                return false;
-            }
-        }
-        //Detail companies
-        public function detailCompanies($id){
-            $this->db->query('SELECT * FROM companies WHERE id = :id');
-            $this->db->bind(':id', $id);
-            if($inv = $this->db->single()){
-                return $inv;
-            }else{
-                return false;
-            }
-        }
-        //Detail people
-        public function detailPeople ($id){
-            $this->db->query('SELECT * FROM people WHERE company_id = :id');
-            $this->db->bind(':id', $id);
-            if($inv = $this->db->single()){
-                return $inv;
-            }else{
-                return false;
-            }
-        }
     }
