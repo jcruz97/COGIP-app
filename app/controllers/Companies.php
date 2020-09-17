@@ -264,7 +264,7 @@
 
             $data = [
                 'details' => $details,
-                'company' => $invoices,
+                'invoice' => $invoices,
                 'people' => $people
             ];
 
