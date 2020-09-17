@@ -2,8 +2,8 @@
 
     // DB Params
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'john');
-    define('DB_PASS', '123456');
+    define('DB_USER', 'newuser');
+    define('DB_PASS', 'password');
     define('DB_NAME', 'cogip_app');
 
     // App Root
