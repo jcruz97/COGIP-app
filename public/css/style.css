@@ -1,3 +1,14 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+    font-style:italic;
+}
+
+h1, h2, h3{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight:bold;
+}
+
+
 img {
     height: 50px;
     fill-opacity: 0.5;
