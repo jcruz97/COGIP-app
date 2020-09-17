@@ -16,10 +16,10 @@
     <tbody>
     <?php foreach ($data['invoices'] as $row) : ?>
         <tr style="cursor:pointer;" onclick="location.replace('<?php echo URLROOT; ?>/invoices/details/<?php echo $row->id; ?>')">
-            <th scope="row">
+            <td>
             <a href="<?php echo URLROOT; ?>/invoices/delete/<?php echo $row->id; ?>" onclick="return confirm('Are you sure to delete invoice n°:<?php echo $row->number; ?>?')" class="btn btn-danger">Delete</a>
             <a href="<?php echo URLROOT; ?>/invoices/edit/<?php echo $row->id; ?>" class="btn btn-primary">Edit</a>
-            </th>
+            </td>
             <td><?php echo $row->number; ?></td>
             <td><?php echo $row->date; ?></td>
             <td><?php echo $row->company_name; ?></td>
