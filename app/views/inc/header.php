@@ -12,5 +12,5 @@
 
     <?php require APPROOT . '/views/inc/navbar.php'; ?>
 
-    <div class="container mb-5">
+    <div class="container">
     

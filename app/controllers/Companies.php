@@ -12,13 +12,6 @@
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
         }
-        public function list(){
-            $companies = $this->companyModel->list();
-            $data = [
-                'companies' => $companies
-            ];
-            $this->view('companies/list', $data);
-        }
 
         public function add()
         {
@@ -166,12 +159,9 @@
                 }
                 else
                 {
-                    if ($data['vat'] != $company->vat)
+                    if ($this->companyModel->findVat($data['vat']))
                     {
-                        if ($this->companyModel->findVat($data['vat']))
-                        {
-                            $data['vat_err'] = 'VAT number already exists';
-                        }
+                        $data['vat_err'] = 'VAT number already exists';
                     }
                 }
 
@@ -227,7 +217,7 @@
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
                 // Get existing post from model
-                $companies = $this->companyModel->getCompanyById($id);
+                $invoice = $this->companyModel->getCompanyById($id);
 
                 // Check for owner
                 if ($_SESSION['user_type'] != '1')

@@ -1,8 +1,7 @@
-<?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1') { redirect(''); } ?>
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-    <a href="<?= URLROOT ?>/users   " class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
+<?php if ($_SESSION['user_type'] != '1') { redirect(''); } ?>
+
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
@@ -34,9 +33,13 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="row">
                         <div class="col">
-                            <input type="submit" value="Add user" class="btn btn-success">
+                            <input type="submit" value="Register" class="btn btn-success btn-block">
+                        </div>
+                        <div class="col">
+                            <a href="<?= URLROOT ?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
                         </div>
                     </div>
                 </form>

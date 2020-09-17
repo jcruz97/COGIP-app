@@ -4,25 +4,20 @@
     {
         public function __construct()
         {
-            $this->invoiceModel = $this->model('Invoice');
-            $this->personModel = $this->model('Person');
-            $this->companyModel = $this->model('Company');            
+            
         }
 
         public function index()
         {
+            // if (isLoggedIn)
+            // {
+            //     redirect('posts');
+            // }
 
-            $invoices = $this->invoiceModel->getInvoices();
-            $people = $this->personModel->getPeopleCompanies();
-            $companies = $this->companyModel->getCompaniesTypes();
-            
             $data =
             [
                 'title' => 'Cogip APP',
-                'description' => 'Welcome to the Cogip APP',
-                'invoices' => $invoices,
-                'people' => $people,
-                'companies' => $companies
+                'description' => 'Welcome to the Cogip APP'
             ];
 
             $this->view('pages/index', $data);

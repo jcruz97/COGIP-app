@@ -8,10 +8,6 @@
         {
             $this->db = new Database;
         }
-        public function list(){
-          $this->db->query('SELECT * FROM `companies` ORDER BY name');
-          return $this->db->resultSet();
-        }
 
         public function getCompanies()
         {

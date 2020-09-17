@@ -8,18 +8,6 @@
             $this->typeModel = $this->model('Type');
         }
 
-        public function index()
-        {
-            $users = $this->userModel->getUsers();
-            
-            $data =
-            [
-                'users' => $users
-            ];
-
-            $this->view('users/index', $data);
-        }
-
         public function register()
         {
             // Get foreign key IDs
@@ -97,8 +85,8 @@
                     // Register user
                     if ($this->userModel->register($data))
                     {
-                        flash('user_message', 'User added');
-                        redirect('users/index');
+                        flash('admin_message', 'User added');
+                        redirect('users/login');
                     }
                     else
                     {
@@ -130,125 +118,6 @@
 
                 // Load view
                 $this->view('users/register', $data);
-            }
-        }
-
-        public function edit($id)
-        {
-            // Get foreign key IDs
-            $users_type = $this->typeModel->getUsersTypes();
-
-            // Get existing user from model
-            $user = $this->userModel->getUserById($id);
-
-            // Check for POST
-            if ($_SERVER['REQUEST_METHOD'] == 'POST')
-            {
-                // Process form
-
-                // Sanitize POST data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // Init data
-                $data =
-                [
-                    'id' => $id,
-                    'name' => trim($_POST['name']),
-                    'password' => trim($_POST['password']),
-                    'confirm_password' => trim($_POST['confirm_password']),
-                    'user_type_id' => intval(trim($_POST['user_type_id'])),
-                    'users_type' => $users_type,
-                    'name_err' => '',
-                    'password_err' => '',
-                    'password_confirm_err' => ''
-                ];
-
-                // Validate Name
-                if (empty($data['name']))
-                {
-                    $data['name_err'] = 'Please enter name';
-                }
-                else
-                {
-                    if ($data['name'] != $user->name)
-                    {
-                        if ($this->userModel->findUserByName($data['name']))
-                        {
-                            $data['name_err'] = 'Name already taken';
-                        }
-                    }
-                }
-
-                // Validate Password
-                if (empty($data['password']))
-                {
-                    $data['password_err'] = 'Please enter password';
-                }
-                elseif (strlen($data['password']) < 4)
-                {
-                    $data['password_err'] = 'Password must be at least 4 characters';
-                }
-
-                // Validate Confirm Password
-                if (empty($data['confirm_password']))
-                {
-                    $data['confirm_password_err'] = 'Please confirm password';
-                }
-                else
-                {
-                    if ($data['password'] != $data['confirm_password'])
-                    {
-                        $data['confirm_password_err'] = 'Passwords do not match';
-                    }
-                }
-
-                // Make sure errors are empty
-                if (
-                    empty($data['name_err']) &&
-                    empty($data['password_err']) &&
-                    empty($data['confirm_password_err']))
-                {
-                    // Validated
-                    
-                    // Hash Password
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                    // Update user
-                    if ($this->userModel->updateUser($data))
-                    {
-                        flash('user_message', 'User updated');
-                        redirect('users');
-                    }
-                    else
-                    {
-                        die('Something went wrong');
-                    }
-                }
-                else
-                {
-                    // Load view with errors
-                    $this->view('users/edit', $data);
-                }
-
-            }
-            else
-            {
-                // Init data
-                $data =
-                [
-                    'id' => $id,
-                    'name' => $user->name,
-                    'password' => '',
-                    'confirm_password' => '',
-                    'user_type_id' => $user->type_id,
-                    'users_type' => $users_type,
-                    'name_err' => '',
-                    'password_err' => '',
-                    'password_confirm_err' => ''
-                ];
-
-                // Load view
-                $this->view('users/edit', $data);
             }
         }
 
@@ -333,35 +202,6 @@
 
                 // Load view
                 $this->view('users/login', $data);
-            }
-        }
-
-        public function delete($id)
-        {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST')
-            {
-                // Get existing post from model
-                $user = $this->userModel->getUserById($id);
-
-                // Check for owner
-                if ($_SESSION['user_type'] != '1')
-                {
-                    redirect('users');
-                }
-
-                if ($this->userModel->deleteUser($id))
-                {
-                    flash('user_message', 'User Removed');
-                    redirect('users');
-                }
-                else
-                {
-                    die('Something went wrong');
-                }
-            }
-            else
-            {
-                redirect('admin');
             }
         }
 
