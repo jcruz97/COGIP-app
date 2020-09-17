@@ -16,7 +16,11 @@
     <tbody>
         <?php foreach ($data['contacts'] as $contact ) : ?>
           <tr>
-              <td><?= $contact->first_name . ' ' . $contact->last_name ?></td>
+              <td style="cursor:pointer;" >
+                <a href="<?= URLROOT ?>/people/details/<?= intval($contact->personId) ?>"  style="color:black; text-decoration:none;">
+                  <?= $contact->first_name . ' ' . $contact->last_name ?>
+                </a>   
+              </td>
               <td><?= $contact->telephone ?></td>
               <td><?= $contact->email ?></td>
               <td><?= $contact->name ?></td>
