@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
     class Users extends Controller
     {
         public function __construct()
@@ -9,9 +8,7 @@
             $this->typeModel = $this->model('Type');
         }
 
-<<<<<<< HEAD
         public function register()
-=======
         public function index()
         {
             // Check for privileges
@@ -31,7 +28,6 @@
         }
 
         public function add()
->>>>>>> origin/john
         {
             // Check for privileges
             if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != '1')
@@ -147,8 +143,7 @@
             }
         }
 
-<<<<<<< HEAD
-=======
+
         public function edit($id)
         {
             // Get foreign key IDs
@@ -265,7 +260,6 @@
             }
         }
 
->>>>>>> origin/john
         public function login()
         {
             // Check for POST
