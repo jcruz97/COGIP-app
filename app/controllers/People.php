@@ -8,6 +8,16 @@
             $this->companyModel = $this->model('Company');
         }
 
+        public function index(){
+            $contacts = $this->personModel->getAllPeople();
+
+            $data = [
+                'contacts' => $contacts
+            ];
+
+            $this->view('people/index', $data);
+        }
+
         public function add()
         {
             // Check if user is logged in

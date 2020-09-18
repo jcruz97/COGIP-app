@@ -38,6 +38,22 @@
             return $results;
         }
 
+        public function getAllPeople()
+        {
+            $this->db->query('SELECT *,
+                              people.id as personId,
+                              companies.id as companyId
+                              FROM people
+                              INNER JOIN companies
+                              ON people.company_id = companies.id
+                              ORDER BY people.last_name ASC
+                              ');
+
+            $results = $this->db->resultSet();
+
+            return $results;
+        }
+
         public function addPerson($data)
         {
             $this->db->query('INSERT INTO people(first_name, last_name, telephone, email, company_id)
