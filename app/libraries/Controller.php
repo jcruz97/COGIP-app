@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
     /*
      * Base Controller
@@ -30,7 +29,7 @@
             }
         }
     }
-=======
+
 /*
  * Base Controller
  * Loads the models ans views
@@ -57,4 +56,3 @@ class Controller {
         }
     }
 }
->>>>>>> origin/mohamed
