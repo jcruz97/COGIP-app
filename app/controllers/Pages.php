@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 
     class Pages extends Controller
     {
