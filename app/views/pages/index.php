@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<<<<<<< HEAD
 
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
@@ -145,5 +146,11 @@
             </tbody>
         </table>
     </div>
+=======
+<div class="jumbotron jumbotron-flud text-center">
+    <h1 class="display-3"><?php echo $data['title']; ?></h1>
+    <p class="lead"><?php echo $data['description']; ?></p>
+</div>
+>>>>>>> origin/mohamed
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
