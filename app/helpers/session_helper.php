@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 
     session_start();
 
@@ -50,7 +50,7 @@
             return false;
         }
     }
-=======
+
 session_start();
 
 // Flash message helper
@@ -73,4 +73,4 @@ function flash($name = '', $message = '', $class = 'alert alert-success'){
         unset($_SESSION[$name. '_class']);
     }
 }
->>>>>>> origin/mohamed
+
