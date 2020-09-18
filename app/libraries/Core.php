@@ -1,6 +1,6 @@
 <?php
 
-<<<<<<< HEAD
+
     /*
      * APP Core Class
      * Creates URL & loads core controller
@@ -65,7 +65,7 @@
             }
         }
     }
-=======
+
 /*
  * App Core Class
  * Creates URL & loads core controller
@@ -120,4 +120,4 @@ class Core {
         }
     }
 }
->>>>>>> origin/mohamed
+
