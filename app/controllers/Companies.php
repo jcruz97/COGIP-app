@@ -9,8 +9,6 @@
             $this->invoiceModel = $this->model('Invoice');
             $this->personModel = $this->model('Person');
         }
-<<<<<<< HEAD
-=======
 
         public function index(){
             $companies = $this->companyModel->list();
@@ -21,7 +19,6 @@
 
             $this->view('companies/index', $data);
         }
->>>>>>> origin/nathan
 
         public function add()
         {
