@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 
   /*
@@ -183,4 +183,3 @@ class Database {
         return $this->stmt->rowCount();
     }
 }
->>>>>>> origin/mohamed
