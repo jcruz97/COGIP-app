@@ -1,6 +1,6 @@
 <?php
 
-    class Company
+    class Company 
     {
         private $db;
 

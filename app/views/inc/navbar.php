@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 =======
         <li class="nav-item">
+<<<<<<< HEAD
         <a class="nav-link" href="<?= URLROOT ?>/people">Contacts</a>
+=======
+          <a class="nav-link" href="<?= URLROOT ?>/companies">Companies</a>
+>>>>>>> origin/nathan
         </li>
         <?php if (isset($_SESSION['user_id'])) : ?>
           <li class="nav-item">

@@ -6,7 +6,22 @@
         {
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
+            $this->invoiceModel = $this->model('Invoice');
+            $this->personModel = $this->model('Person');
         }
+<<<<<<< HEAD
+=======
+
+        public function index(){
+            $companies = $this->companyModel->list();
+
+            $data = [
+                'companies' => $companies
+            ];
+
+            $this->view('companies/index', $data);
+        }
+>>>>>>> origin/nathan
 
         public function add()
         {
@@ -237,5 +252,20 @@
             {
                 redirect('admin');
             }
+        }
+
+        // view details
+        public function details($id){
+            $details = $this->companyModel->getCompanyById($id);
+            $invoices = $this->invoiceModel->getInvoicesById($id);
+            $people = $this->personModel->getPersonById($id);
+
+            $data = [
+                'details' => $details,
+                'invoice' => $invoices,
+                'people' => $people
+            ];
+
+            $this->view('companies/details', $data);
         }
     }
