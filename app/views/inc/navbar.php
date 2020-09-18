@@ -16,14 +16,11 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
         </li>
-<<<<<<< HEAD
-=======
+
         <li class="nav-item">
-<<<<<<< HEAD
-        <a class="nav-link" href="<?= URLROOT ?>/people">Contacts</a>
-=======
+
           <a class="nav-link" href="<?= URLROOT ?>/companies">Companies</a>
->>>>>>> origin/nathan
+
         </li>
         <?php if (isset($_SESSION['user_id'])) : ?>
           <li class="nav-item">
@@ -35,8 +32,13 @@
                 <a class="nav-link" href="<?= URLROOT ?>/users">Users</a>
             </li>
         <?php endif; ?>
->>>>>>> origin/jurgen
+        <li class="nav-item">
+        <li class="nav-item">
+
+        <a class="nav-link" href="<?= URLROOT ?>/people">Contacts</a>
+        </li>
       </ul>
+      
       <ul class="navbar-nav ml-auto">
       <?php if(isset($_SESSION['user_id'])) :  ?>
         <li class="nav-item">

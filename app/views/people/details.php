@@ -32,5 +32,5 @@
     <td><?php echo $data['people']->Telephone; ?></td>
     </tr>
 </table>
-<?php endif; ?>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
