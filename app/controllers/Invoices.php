@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
     class Invoices extends Controller
     {
@@ -225,7 +224,7 @@
             }
         }
     }
-=======
+
 class Invoices extends Controller {
     public function __construct(){
         $this->invoiceModel = $this->model('Invoice');
@@ -359,4 +358,4 @@ class Invoices extends Controller {
         $this->view('invoices/details', $data);
     }
 }
->>>>>>> origin/mohamed
+
