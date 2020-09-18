@@ -9,7 +9,7 @@
             $this->db = new Database;
         }
 
-        public function getTypes()
+        public function getCompaniesTypes()
         {
             $this->db->query('SELECT * FROM type');
 

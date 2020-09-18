@@ -4,19 +4,20 @@
     {
         public function __construct()
         {
-            if (!isLoggedIn())
-            {
-                redirect('users/login');
-            }
-
             $this->companyModel = $this->model('Company');
             $this->typeModel = $this->model('Type');
         }
 
         public function add()
         {
+            // Check if user is logged in
+            if (!isLoggedIn())
+            {
+                redirect('users/login');
+            }
+
             // Get foreign key IDs
-            $types = $this->typeModel->getTypes();
+            $types = $this->typeModel->getCompaniesTypes();
 
             // Check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -32,7 +33,7 @@
                     'name' => trim($_POST['name']),
                     'country' => trim($_POST['country']),
                     'vat' => trim($_POST['vat']),
-                    'type_id' => intval(trim($_POST['type_id'])),
+                    'type_id' => trim($_POST['type_id']),
                     'types' => $types,
                     'name_err' => '',
                     'country_err' => '',
@@ -72,7 +73,7 @@
                 {
                     // Validated
 
-                    // Add invoice
+                    // Add company
                     if ($this->companyModel->addCompany($data))
                     {
                         flash('admin_message', 'Company added');
@@ -111,9 +112,9 @@
         }
 
         public function edit($id)
-        {
+        {            
             // Get foreign key IDs
-            $types = $this->typeModel->getTypes();
+            $types = $this->typeModel->getCompaniesTypes();
 
             // Get existing company from model
             $company = $this->companyModel->getCompanyById($id);
@@ -133,7 +134,7 @@
                     'name' => trim($_POST['name']),
                     'country' => trim($_POST['country']),
                     'vat' => trim($_POST['vat']),
-                    'type_id' => intval(trim($_POST['type_id'])),
+                    'type_id' => trim($_POST['type_id']),
                     'types' => $types,
                     'name_err' => '',
                     'country_err' => '',
@@ -173,7 +174,7 @@
                 {
                     // Validated
 
-                    // Add invoice
+                    // Update company
                     if ($this->companyModel->updateCompany($data))
                     {
                         flash('admin_message', 'Company updated');
@@ -216,10 +217,7 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                // Get existing post from model
-                $invoice = $this->companyModel->getCompanyById($id);
-
-                // Check for owner
+                // Check for privileges
                 if ($_SESSION['user_type'] != '1')
                 {
                     redirect('admin');
@@ -227,7 +225,7 @@
 
                 if ($this->companyModel->deleteCompany($id))
                 {
-                    flash('admin_message', 'Company Removed');
+                    flash('admin_message', 'Company removed');
                     redirect('admin');
                 }
                 else

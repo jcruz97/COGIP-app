@@ -4,17 +4,18 @@
     {
         public function __construct()
         {
-            if (!isLoggedIn())
-            {
-                redirect('users/login');
-            }
-
             $this->personModel = $this->model('Person');
             $this->companyModel = $this->model('Company');
         }
 
         public function add()
         {
+            // Check if user is logged in
+            if (!isLoggedIn())
+            {
+                redirect('users/login');
+            }
+            
             // Get foreign key IDs
             $companies = $this->companyModel->getCompanies();
 
@@ -33,7 +34,7 @@
                     'last_name' => trim($_POST['last_name']),
                     'telephone' => trim($_POST['telephone']),
                     'email' => trim($_POST['email']),
-                    'company_id' => intval(trim($_POST['company_id'])),
+                    'company_id' => trim($_POST['company_id']),
                     'companies' => $companies,
                     'first_name_err' => '',
                     'last_name_err' => '',
@@ -152,7 +153,7 @@
                     'last_name' => trim($_POST['last_name']),
                     'telephone' => trim($_POST['telephone']),
                     'email' => trim($_POST['email']),
-                    'company_id' => intval(trim($_POST['company_id'])),
+                    'company_id' => trim($_POST['company_id']),
                     'companies' => $companies,
                     'first_name_err' => '',
                     'last_name_err' => '',
@@ -252,10 +253,7 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                // Get existing post from model
-                $people = $this->personModel->getPersonById($id);
-
-                // Check for owner
+                // Check for privileges
                 if ($_SESSION['user_type'] != '1')
                 {
                     redirect('admin');
@@ -263,7 +261,7 @@
 
                 if ($this->personModel->deletePerson($id))
                 {
-                    flash('admin_message', 'Person Removed');
+                    flash('admin_message', 'Person removed');
                     redirect('admin');
                 }
                 else

@@ -1,13 +1,17 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
+<<<<<<< HEAD:app/views/users/register.php
 <?php if ($_SESSION['user_type'] != '1') { redirect(''); } ?>
 
+=======
+    <a href="<?= URLROOT ?>/users" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
+>>>>>>> origin/john:app/views/users/add.php
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
                 <h2>Add User</h2>
                 <p>Create a new user with this form</p>
-                <form action="<?= URLROOT ?>/users/register" method="post">
+                <form action="<?= URLROOT ?>/users/add" method="post">
                     <div class="form-group">
                         <label for="name">Name: <sup>*</sup></label>
                         <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?= $data['name'] ?>">

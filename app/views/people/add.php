@@ -2,8 +2,8 @@
 
     <a href="<?= URLROOT ?>/admin   " class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
     <div class="card card-body bg-light mt-5">
-        <h2>Add Person</h2>
-        <p>Create a new person with this form</p>
+        <h2>Add Contact</h2>
+        <p>Create a new contact with this form</p>
         <form action="<?= URLROOT ?>/people/add" method="post">
             <div class="form-group">
                 <label for="first_name">First Name: <sup>*</sup></label>

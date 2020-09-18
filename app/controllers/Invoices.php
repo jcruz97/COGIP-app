@@ -4,11 +4,6 @@
     {
         public function __construct()
         {
-            if (!isLoggedIn())
-            {
-                redirect('users/login');
-            }
-
             $this->invoiceModel = $this->model('Invoice');
             $this->companyModel = $this->model('Company');
             $this->personModel = $this->model('Person');
@@ -16,6 +11,12 @@
 
         public function add()
         {
+            // Check if user is logged in
+            if (!isLoggedIn())
+            {
+                redirect('users/login');
+            }
+            
             // Get foreign key IDs
             $companies = $this->companyModel->getCompanies();
             $people = $this->personModel->getPeople();
@@ -33,8 +34,8 @@
                 [
                     'number' => trim($_POST['number']),
                     'date' => trim($_POST['date']),
-                    'company_id' => intval(trim($_POST['company_id'])),
-                    'people_id' => intval(trim($_POST['people_id'])),
+                    'company_id' => trim($_POST['company_id']),
+                    'people_id' => trim($_POST['people_id']),
                     'companies' => $companies,
                     'people' => $people,
                     'number_err' => '',
@@ -126,8 +127,8 @@
                     'id' => $id,
                     'number' => trim($_POST['number']),
                     'date' => trim($_POST['date']),
-                    'company_id' => intval(trim($_POST['company_id'])),
-                    'people_id' => intval(trim($_POST['people_id'])),
+                    'company_id' => trim($_POST['company_id']),
+                    'people_id' => trim($_POST['people_id']),
                     'companies' => $companies,
                     'people' => $people,
                     'number_err' => '',
@@ -201,10 +202,7 @@
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                // Get existing post from model
-                $invoice = $this->invoiceModel->getInvoiceById($id);
-
-                // Check for owner
+                // Check for privileges
                 if ($_SESSION['user_type'] != '1')
                 {
                     redirect('admin');
@@ -212,7 +210,7 @@
 
                 if ($this->invoiceModel->deleteInvoice($id))
                 {
-                    flash('admin_message', 'Invoice Removed');
+                    flash('admin_message', 'Invoice removed');
                     redirect('admin');
                 }
                 else
