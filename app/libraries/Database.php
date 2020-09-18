@@ -99,7 +99,7 @@
       return $this->stmt->rowCount();
     }
   }
-=======
+
 <?php
 /*
  * PDO Database class
