@@ -1,6 +1,6 @@
-Project title
+COGIP-app
 =====================
-Project description
+Little accountant web application for the COGIP.
 
 
 **Done by : John Laterre Mohamed Shmayssany Aurore Limage Nathan Jacquet Jurgen Cruz**
