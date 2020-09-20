@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `cogip_app`
 --
-CREATE DATABASE cogip_app
+CREATE DATABASE IF NOT EXISTS `cogip_app` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `cogip_app`;
+
 -- --------------------------------------------------------
 
 --
