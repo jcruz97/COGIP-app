@@ -1,10 +1,10 @@
 <?php
 
     // DB Params
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'admin');
-    define('DB_PASS', 'DOilicjuDO09');
-    define('DB_NAME', 'cogip_app');
+    define('DB_HOST', 'us-cdbr-east-02.cleardb.com');
+    define('DB_USER', 'b6dd2d20d46ff3');
+    define('DB_PASS', '18225815');
+    define('DB_NAME', 'heroku_6b70354f618394f');
 
     // App Root
     define('APPROOT', dirname(dirname(__FILE__)));
