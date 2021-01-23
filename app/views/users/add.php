@@ -1,11 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<<<<<<< HEAD:app/views/users/register.php
 <?php if ($_SESSION['user_type'] != '1') { redirect(''); } ?>
 
-=======
-    <a href="<?= URLROOT ?>/users" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
->>>>>>> origin/john:app/views/users/add.php
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
